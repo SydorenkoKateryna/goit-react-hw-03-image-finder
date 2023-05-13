@@ -1,7 +1,9 @@
 import { Component } from 'react';
+import { toast } from 'react-toastify';
 import getImages from 'api/getImages';
 import ImageGalleryItem from '../ImageGalleryItem/';
 import Button from '../Button';
+import Loader from '../Loader';
 import css from './ImageGallery.module.css';
 
 const LIMIT = 12;
@@ -57,14 +59,15 @@ class ImageGallery extends Component {
         console.log(totalHits);
 
         if (totalHits === 0) {
-          alert(
+          toast.error(
             'Sorry, there are no images matching your search query. Please try again.'
           );
+
           this.setState({ isLoading: false });
           return;
         }
 
-        alert(`Hooray! We found ${totalHits} images.`);
+        toast.success(`Hooray! We found ${totalHits} images.`);
 
         this.setState({
           images: hits,
@@ -95,7 +98,7 @@ class ImageGallery extends Component {
     this.setState({ isLoading: true });
 
     if (page > Math.ceil(totalPages / LIMIT)) {
-      alert("We're sorry, but you've reached the end of search results.");
+      toast.info("We're sorry, but you've reached the end of search results.");
 
       this.setState({
         isLoading: false,
@@ -147,7 +150,7 @@ class ImageGallery extends Component {
           </ul>
         )}
 
-        {isLoading && <h2>Loading...</h2>}
+        {isLoading && <Loader />}
 
         {/* {images && totalPages > LIMIT && (
           <Button handleClick={() => this.handleLoadMoreBtnClick()}></Button>

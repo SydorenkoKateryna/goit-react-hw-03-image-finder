@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { FiSearch } from 'react-icons/fi';
 import css from './Searchbar.module.css';
 
 class Searchbar extends Component {
@@ -7,8 +8,6 @@ class Searchbar extends Component {
   };
 
   handleChange = ({ target: { value } }) => {
-    console.log(value);
-
     this.setState({ value });
   };
 
@@ -28,7 +27,7 @@ class Searchbar extends Component {
       <header className={css.searchbar}>
         <form className={css.form} onSubmit={this.handleSubmit}>
           <button type="submit" className={css.button}>
-            <span className={css['button-label']}>Search</span>
+            <FiSearch size={24} />
           </button>
 
           <input
