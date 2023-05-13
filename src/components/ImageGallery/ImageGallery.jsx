@@ -20,7 +20,7 @@ class ImageGallery extends Component {
   };
 
   async componentDidUpdate(prevProps, prevState) {
-    const newSearchImage = this.props.searchImage.trim();
+    const newSearchImage = this.props.searchImage;
 
     if (prevProps.searchImage !== newSearchImage && newSearchImage) {
       page = 1;
@@ -81,7 +81,7 @@ class ImageGallery extends Component {
       return;
     }
 
-    const searchImage = this.props.searchImage.trim();
+    const searchImage = this.props.searchImage;
     const response = await getImages(searchImage, page);
     const { hits } = response.data;
 
