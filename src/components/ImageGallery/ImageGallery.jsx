@@ -2,6 +2,7 @@ import { Component } from 'react';
 import getImages from 'api/getImages';
 import ImageGalleryItem from '../ImageGalleryItem/';
 import Button from '../Button';
+import css from './ImageGallery.module.css';
 
 const LIMIT = 12;
 
@@ -132,12 +133,13 @@ class ImageGallery extends Component {
         )}
 
         {images && (
-          <ul className="gallery">
+          <ul className={css.gallery}>
             {images.map(image => {
               return (
                 <ImageGalleryItem
                   key={image.id}
                   webformatURL={image.webformatURL}
+                  largeImageURL={image.largeImageURL}
                   tags={image.tags}
                 />
               );

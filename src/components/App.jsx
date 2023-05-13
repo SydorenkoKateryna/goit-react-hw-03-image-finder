@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Searchbar from './Searchbar';
 import ImageGallery from './ImageGallery';
+import css from './App.module.css';
 
 class App extends Component {
   state = {
@@ -12,23 +13,12 @@ class App extends Component {
   };
 
   render() {
-    const {searchImage} = this.state;
+    const { searchImage } = this.state;
 
     return (
-      <div
-        style={{
-          // height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: '10px',
-          fontSize: 40,
-          color: '#010101',
-        }}
-      >
+      <div className={css.app}>
         <Searchbar onSubmit={this.handleSearch} />
-        <ImageGallery searchImage={searchImage}/>
+        <ImageGallery searchImage={searchImage} />
       </div>
     );
   }
