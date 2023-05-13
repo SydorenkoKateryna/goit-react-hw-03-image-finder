@@ -11,30 +11,15 @@ const getImages = async (search, page) => {
     per_page: 12,
   });
 
-//   try {
-//     const response = await axios.get(
-//       `https://pixabay.com/api/?${params.toString()}`
-//     );
+  const response = await axios.get(
+    `https://pixabay.com/api/?${params.toString()}`
+  );
 
-//     if (response.status !== 200) {
-//       throw new Error(response.status);
-//     }
+  if (response.status !== 200) {
+    throw new Error(response.status);
+  }
 
-//     return response;
-//   } catch (error) {
-//     console.log(error.message);
-//     return error.message;
-//   }
-
-    const response = await axios.get(
-      `https://pixabay.com/api/?${params.toString()}`
-    );
-
-    if (response.status !== 200) {
-        throw new Error(response.status);
-    }
-
-    return response;
+  return response;
 };
 
 export default getImages;
